@@ -1,59 +1,52 @@
-# EventPlannerAppFrontend
+# 🚀 JoinUp - Etkinlik Planlama Uygulaması
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.9.
+JoinUp, kullanıcıların etkinlik oluşturabildiği, etkinliklere katılım sağlayabildiği ve kendi etkinliklerini yönetebildiği bir web uygulamasıdır. Proje kapsamında backend ve frontend teknolojileri kullanılarak katmanlı mimariye uygun bir sistem geliştirilmiştir. Bu repository, JoinUp uygulamasının Angular tabanlı frontend projesidir. Uygulama, kullanıcıların etkinlikleri görüntülemesine, yönetmesine ve sisteme kayıt olup giriş yapabilmesine olanak tanıyan, Bootstrap ile tasarlanmış modern bir arayüz sunar.
 
-## Development server
+## Kullanılan Teknolojiler
+* Angular
+* Bootstrap
 
-To start a local development server, run:
+
+ ## Proje Özellikleri
+
+- Kullanıcı kayıt ve giriş işlemleri 
+- Etkinlik oluşturma, güncelleme, silme ve arşivleme  
+- Etkinlik listeleme ve arama  
+- Sayfalama desteği ile etkinlik görüntüleme  
+- Etkinlik katılım takibi  
+- Kullanıcı bazlı etkinlik yönetimi  
+
+## Kurulum 
+### 1. Ön Gereksinimler
+
+Projenin çalışması için sisteminizde Node.js ve Angular CLI yüklü olmalıdır.
+
+### 2. Projeyi Klonlayın
+
+```bash
+git clone https://github.com/yarenkeles1/Event-Planner-Frontend
+cd event-planner-app-frontend
+   ```
+
+### 3. Gerekli kütüphaneleri yükleyin
+
+```bash
+npm install
+   ```
+
+## 4. Uygulamayı Çalıştırın
 
 ```bash
 ng serve
-```
+   ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Uygulama Ekran Görüntüleri
 
-## Code scaffolding
+### Ana Ekran
+![Giriş Ekranı](src/assets/images/ana_ekran.png)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### Benim Etkinliklerim Ekranı
+![Etkinlik Listeleme](src/assets/images/benim_etkinliklerim.png)
 
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Katıldığım Etkinlikler Ekranı
+![Etkinlik Listeleme](src/assets/images/katıldığım_etkinlikler.png)
