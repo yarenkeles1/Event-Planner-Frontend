@@ -1,0 +1,69 @@
+<div class="edit-page">
+  <div class="edit-card">
+    <div class="edit-header">
+      <button class="btn-back" routerLink="/my-events">
+        <i class="ti ti-arrow-left"></i> Geri Dön
+      </button>
+      <h2 class="edit-title">Etkinliği Düzenle</h2>
+    </div>
+
+    @if (loading()) {
+      <div class="text-center my-4">
+        <div class="spinner-border text-primary" role="status">
+          <span class="visually-hidden">Yükleniyor...</span>
+        </div>
+      </div>
+    } @else {
+      <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+        <input type="hidden" formControlName="id">
+
+        <div class="form-group">
+          <label class="form-label">Etkinlik Adı</label>
+          <input type="text" class="form-control" formControlName="title" placeholder="Etkinliğin adını girin">
+        </div>
+
+        <div class="form-row">
+          <div class="form-group half-width">
+            <label class="form-label">Tarih</label>
+            <input type="date" class="form-control" formControlName="date">
+          </div>
+          <div class="form-group half-width">
+            <label class="form-label">Saat</label>
+            <input type="time" class="form-control" formControlName="time">
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group half-width">
+            <label class="form-label">Kategori</label>
+            <input type="text" class="form-control" formControlName="category" placeholder="Örn: Teknoloji, Müzik">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Yer / Konum</label>
+          <input type="text" class="form-control" formControlName="location" placeholder="Etkinliğin yapılacağı adres">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Etkinlik Görsel Linki (URL)</label>
+          <input type="text" class="form-control" formControlName="imageUrl" placeholder="https://siteadi.com/yeni-resim.jpg">
+          <small class="text-muted" style="font-size: 11px; color: #9ca3af; display: block; margin-top: 4px;">
+            Görseli değiştirmek için yeni bir resim adresi yapıştırın.
+          </small>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Açıklama</label>
+          <textarea class="form-control" rows="4" formControlName="description" placeholder="Etkinlik detaylarını anlatın..."></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn-primary" [disabled]="editForm.invalid">
+            <i class="ti ti-device-floppy"></i> Değişiklikleri Kaydet
+          </button>
+        </div>
+      </form>
+    }
+  </div>
+</div>

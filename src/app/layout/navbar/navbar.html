@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid px-4">
+
+    <a class="navbar-brand" routerLink="/">
+      <i class="ti ti-calendar-event"></i>
+      JoinUp
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/events" routerLinkActive="active">Etkinlikler</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/my-events" routerLinkActive="active">Benim Etkinliklerim</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/joined-events" routerLinkActive="active">Katıldığım Etkinlikler</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/event-create" routerLinkActive="active">Etkinlik Oluştur</a>
+        </li>
+      </ul>
+
+      <div class="d-flex align-items-center gap-2">
+        
+        @if (!isLoggedIn()) {
+          <a routerLink="/login" class="btn-nav-outline">Giriş Yap</a>
+          <a routerLink="/register" class="btn-nav-solid">Kayıt Ol</a>
+        } 
+        
+        @else {
+          <div class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle user-btn" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="ti ti-user-circle"></i> {{ userName() }}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end custom-dropdown">
+              <li>
+                <a class="dropdown-item" routerLink="/profile">
+                  <i class="ti ti-user"></i> Hesap Detayları
+                </a>
+              </li>
+              <li><hr class="dropdown-divider"></li>
+              <li>
+                <button class="dropdown-item text-danger" (click)="logout()">
+                  <i class="ti ti-logout"></i> Çıkış Yap
+                </button>
+              </li>
+            </ul>
+          </div>
+        }
+
+      </div>
+    </div>
+
+  </div>
+</nav>

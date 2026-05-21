@@ -1,0 +1,127 @@
+<div class="my-events-page">
+  <div class="page-header">
+    <h2 class="page-title">Benim Etkinliklerim</h2>
+    <button class="btn-primary" routerLink="/event-create">
+      <i class="ti ti-plus"></i> Yeni Etkinlik
+    </button>
+  </div>
+
+  @if (loading()) {
+    <div class="text-center my-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Yükleniyor...</span>
+      </div>
+    </div>
+  }
+
+  @if (!loading() && events().length === 0) {
+    <div class="empty-state">
+      <div class="empty-icon"><i class="ti ti-calendar-off"></i></div>
+      <h3>Henüz etkinlik oluşturmadınız</h3>
+      <p>Hemen ilk etkinliğinizi oluşturarak insanları bir araya getirin!</p>
+    </div>
+  }
+
+  <div class="events-grid">
+    @for (event of events(); track event.id) {
+      <div class="event-card">
+        <div class="card-header">
+          <span class="badge-category">{{ event.category }}</span>
+          <span class="badge-status" [class]="'status-' + event.status.toLowerCase()">
+            {{ statusLabel(event.status) }}
+          </span>
+        </div>
+        
+        <h3 class="event-title">{{ event.title }}</h3>
+        
+        <div class="event-meta-list">
+          <div class="meta-item">
+            <i class="ti ti-calendar"></i> {{ event.date | date:'dd.MM.yyyy' }}
+          </div>
+          <div class="meta-item">
+            <i class="ti ti-clock"></i> {{ event.time | slice:0:5 }}
+          </div>
+          <div class="meta-item">
+            <i class="ti ti-map-pin"></i> {{ event.location }}
+          </div>
+        </div>
+
+        <div class="card-actions">
+          <button class="btn-outline main-action" (click)="toggleParticipants(event.id)" style="border-color: #6c63ff; color: #6c63ff;">
+            <i class="bi bi-people" style="margin-right: 5px;"></i> Katılımcılar
+          </button>
+
+          @if (event.status !== 'ARCHIVED') {
+            <button class="btn-outline main-action" (click)="goEdit(event.id)">
+              <i class="bi bi-pencil-square" style="margin-right: 5px;"></i> Düzenle
+            </button>
+          }
+
+          <div class="action-icons">
+            
+            @if (event.status === 'ACTIVE') {
+              <button class="btn-warning icon-only" title="Durdur" (click)="changeStatus(event.id, 'pause')" style="color: #d97706; font-size: 20px;">
+                <i class="bi bi-pause-fill"></i>
+              </button>
+            }
+            
+            @if (event.status === 'PAUSED') {
+              <button class="btn-success icon-only" title="Yayınla" (click)="changeStatus(event.id, 'publish')" style="color: #16a34a; font-size: 20px;">
+                <i class="bi bi-play-fill"></i>
+              </button>
+            }
+
+            @if (event.status !== 'ARCHIVED') {
+              <button class="btn-secondary icon-only" title="Arşivle" (click)="changeStatus(event.id, 'archive')" style="color: #64748b; font-size: 18px;">
+                <i class="bi bi-archive"></i>
+              </button>
+            }
+
+            <button class="btn-danger icon-only" title="Sil" (click)="deleteEvent(event.id)" style="color: #ef4444; font-size: 18px;">
+              <i class="bi bi-trash"></i>
+            </button>
+
+          </div>
+        </div>
+
+        @if (activeEventId() === event.id) {
+          <div class="participants-drawer">
+            <h5 class="drawer-title"><i class="ti ti-users-group"></i> Kayıtlı Katılımcılar</h5>
+            
+            @if (participants().length === 0) {
+              <p class="no-participants">Henüz katılım sağlayan kimse yok.</p>
+            } @else {
+              <ul class="participants-list">
+                @for (p of participants(); track p.id) {
+                  <li>
+                    <i class="ti ti-user-check"></i> {{ p.userFullName }}
+                  </li>
+                }
+              </ul>
+            }
+          </div>
+        }
+
+      </div>
+    }
+  </div>
+
+  @if (!loading() && totalPages() > 0) {
+    <nav class="mt-4 mb-4">
+      <ul class="pagination justify-content-end">
+        @for (page of getPagesArray(); track page) {
+          <li class="page-item">
+            <a class="page-link"
+               [class.active]="page === currentPage()"
+               role="button"
+               (click)="changePage(page)">
+              {{ page + 1 }}
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+  }
+  
+
+</div>

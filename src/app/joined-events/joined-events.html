@@ -1,0 +1,75 @@
+<div class="joined-events-page">
+  <div class="page-header">
+    <h2 class="page-title">Katıldığım Etkinlikler</h2>
+  </div>
+
+  @if (loading()) {
+    <div class="text-center my-5">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Yükleniyor...</span>
+      </div>
+    </div>
+  }
+
+  @if (!loading() && events().length === 0) {
+    <div class="empty-state">
+      <div class="empty-icon"><i class="ti ti-calendar-event"></i></div>
+      <h3>Henüz bir etkinliğe katılmadınız</h3>
+      <p>Keşfet sayfasındaki etkinliklere göz atarak ilk kaydınızı oluşturabilirsiniz!</p>
+      <button class="btn-primary" routerLink="/events" style="margin-top: 1rem;">
+        Etkinlikleri Keşfet
+      </button>
+    </div>
+  }
+
+  <div class="events-grid">
+    @for (event of events(); track event.id) {
+      <div class="event-card">
+        <div class="card-header">
+          <span class="badge-category">{{ event.category }}</span>
+          <div class="registered-badge">
+            <i class="ti ti-circle-check"></i> Kayıtlı
+          </div>
+        </div>
+        
+        <h3 class="event-title">{{ event.title }}</h3>
+        
+        <div class="event-meta-list">
+          <div class="meta-item">
+            <i class="ti ti-calendar"></i> {{ event.date | date:'dd.MM.yyyy' }}
+          </div>
+          <div class="meta-item">
+            <i class="ti ti-clock"></i> {{ event.time | slice:0:5 }}
+          </div>
+          <div class="meta-item">
+            <i class="ti ti-map-pin"></i> {{ event.location }}
+          </div>
+        </div>
+
+        <div class="card-actions">
+          <button class="btn-outline" (click)="goDetail(event.id)">
+            <i class="ti ti-eye"></i> Detayları Gör
+          </button>
+        </div>
+      </div>
+    }
+  </div>
+
+  @if (!loading() && totalPages() > 1) {
+    <nav class="mt-4 mb-4">
+      <ul class="pagination justify-content-end">
+        @for (page of getPagesArray(); track page) {
+          <li class="page-item">
+            <a class="page-link"
+               [class.active]="page === currentPage()"
+               role="button"
+               (click)="changePage(page)">
+              {{ page + 1 }}
+            </a>
+          </li>
+        }
+      </ul>
+    </nav>
+  }
+
+</div>

@@ -1,0 +1,148 @@
+.joined-events-page {
+  padding: 2rem;
+  background: #f0f4ff;
+  min-height: calc(100vh - 64px);
+}
+
+.page-header {
+  max-width: 1200px;
+  margin: 0 auto 2rem auto;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: 600;
+  color: #1e1b4b;
+  margin: 0;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: #fff;
+  border-radius: 16px;
+  border: 0.5px dashed #6c63ff;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.empty-icon {
+  font-size: 48px;
+  color: #a5b4fc;
+  margin-bottom: 1rem;
+}
+
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.event-card {
+  background: #fff;
+  border: 0.5px solid #e0e7ff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(108, 99, 255, 0.1);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.event-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1e1b4b;
+  margin: 0 0 1rem 0;
+}
+
+.badge-category {
+  font-size: 11px;
+  padding: 4px 12px;
+  border-radius: 99px;
+  background: #ede9fe;
+  color: #6c63ff;
+  font-weight: 600;
+}
+
+.registered-badge {
+  font-size: 11px;
+  padding: 4px 12px;
+  border-radius: 99px;
+  background: #dcfce7;
+  color: #16a34a;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.event-meta-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  flex-grow: 1;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #4b5563;
+}
+
+.meta-item i { color: #6c63ff; font-size: 16px; }
+
+.card-actions {
+  margin-top: auto;
+  border-top: 1px solid #f3f4f6;
+  padding-top: 1.25rem;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #6c63ff, #3b82f6);
+  color: #fff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 99px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-outline {
+  width: 100%;
+  background: transparent;
+  color: #6c63ff;
+  border: 1.5px solid #6c63ff;
+  padding: 8px 16px;
+  border-radius: 99px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+
+.btn-outline:hover {
+  background: #f0f4ff;
+}

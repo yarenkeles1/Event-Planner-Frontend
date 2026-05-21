@@ -1,0 +1,117 @@
+.login-page {
+  min-height: calc(100vh - 64px);
+  background: #f0f4ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.login-card {
+  background: #fff;
+  border: 0.5px solid #e0e7ff;
+  border-radius: 16px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 380px;
+}
+
+.accent-bar {
+  height: 4px;
+  background: linear-gradient(90deg, #6c63ff, #3b82f6);
+  border-radius: 99px;
+  margin-bottom: 1.75rem;
+  width: 48px;
+}
+
+.card-head {
+  margin-bottom: 1.75rem;
+}
+
+.card-head h2 {
+  font-size: 22px;
+  font-weight: 500;
+  color: #1e1b4b;
+}
+
+.card-head p {
+  font-size: 14px;
+  color: #6b7280;
+  margin-top: 6px;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+.form-label {
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 6px;
+  display: block;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+}
+
+.input-wrap {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  font-size: 16px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 11px 14px 11px 36px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  background: #f3f4f6;
+  color: #111827;
+  outline: none;
+}
+
+.btn-primary {
+  width: 100%;
+  background: linear-gradient(135deg, #6c63ff, #3b82f6);
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 99px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.link-small {
+  font-size: 13px;
+  color: #6b7280;
+  text-align: center;
+  display: block;
+  margin-top: 1.25rem;
+}
+
+.link-small a {
+  color: #6c63ff;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.form-input.invalid {
+  border-color: #ef4444;
+}
+
+.error {
+  color: #ef4444;
+  font-size: 12px;
+  margin-top: 4px;
+  display: block;
+}

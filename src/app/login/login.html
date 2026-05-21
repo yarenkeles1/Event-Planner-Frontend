@@ -1,0 +1,40 @@
+<div class="login-page">
+  <div class="login-card">
+    <div class="accent-bar"></div>
+    <div class="card-head">
+      <h2>Giriş Yap </h2>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <div class="input-wrap">
+          <i class="ti ti-mail input-icon"></i>
+          <input class="form-input" type="email" formControlName="email" />
+        </div>
+        <small class="error" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+          Geçerli bir email giriniz
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Şifre</label>
+        <div class="input-wrap">
+          <i class="ti ti-lock input-icon"></i>
+          <input class="form-input" type="password" formControlName="password" />
+        </div>
+        <small class="error" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+          Şifre en az 6 karakter olmalıdır
+        </small>
+      </div>
+
+      <button class="btn-primary" type="submit" [disabled]="loginForm.invalid">
+        Giriş Yap 
+      </button>
+    </form>
+
+    <span class="link-small">
+      Hesabın yok mu? <a routerLink="/register">Kayıt Ol</a>
+    </span>
+  </div>
+</div>

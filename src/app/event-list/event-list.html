@@ -1,0 +1,63 @@
+<div class="event-list-page">
+  <div class="page-header">
+    <div class="page-title">Etkinlikler</div>
+    <div class="search-wrap">
+      <i class="ti ti-search"></i>
+      <input type="text" placeholder="Etkinlik ara..." (input)="onSearch($event)" />
+    </div>
+  </div>
+
+  @if (loading()) {
+    <div class="text-center my-4">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Yükleniyor...</span>
+      </div>
+    </div>
+  }
+
+  <div class="row">
+    @for (item of eventArray(); track item.id) {
+      <div class="col-sm-4 mb-4">
+        
+        <div class="event-card hub-card" [routerLink]="['/event-detail', item.id]">
+          
+          <div class="card-img-wrapper">
+            <span class="floating-category">{{ item.category }}</span>
+            <img [src]="item.imageUrl ? item.imageUrl : 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800&auto=format&fit=crop'" 
+                 alt="Etkinlik Görseli" class="card-img">
+          </div>
+
+          <div class="card-body">
+            <h3 class="card-title">{{ item.title }}</h3>
+            <p class="card-desc">{{ item.description | slice:0:80 }}{{ item.description.length > 80 ? '...' : '' }}</p>
+
+            <div class="card-footer-badges">
+              <span class="info-badge">
+                <i class="ti ti-calendar"></i> {{ item.date | date:'dd.MM.yyyy' }}
+              </span>
+              <span class="info-badge text-truncate" style="max-width: 60%;">
+                <i class="ti ti-map-pin"></i> {{ item.location }}
+              </span>
+            </div>
+          </div>
+
+        </div>
+        </div>
+    }
+  </div>
+
+  <nav>
+    <ul class="pagination justify-content-end">
+      @for (page of pages(); track page) {
+        <li class="page-item">
+          <a class="page-link"
+             [class.active]="page === activePage()"
+             role="button"
+             (click)="loadEvents(page)">
+            {{ page + 1 }}
+          </a>
+        </li>
+      }
+    </ul>
+  </nav>
+</div>

@@ -1,0 +1,130 @@
+.form-page {
+  min-height: calc(100vh - 64px);
+  background: #f0f4ff;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 3rem 1rem;
+}
+
+.profile-card {
+  background: #fff;
+  border: 0.5px solid #e0e7ff;
+  border-radius: 16px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+}
+
+.accent-bar {
+  height: 4px;
+  background: linear-gradient(90deg, #6c63ff, #3b82f6);
+  border-radius: 99px;
+  margin-bottom: 1.75rem;
+  width: 48px;
+}
+
+.card-head h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1e1b4b;
+  margin-bottom: 8px;
+}
+
+.card-head p {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.profile-stats {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 16px 12px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.2s;
+}
+
+.stat-box:hover {
+  border-color: #6c63ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(108, 99, 255, 0.05);
+}
+
+.stat-number {
+  font-size: 24px;
+  font-weight: 700;
+  color: #6c63ff;
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: #6b7280;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.form-group { 
+  margin-bottom: 1.25rem; 
+}
+
+.form-label {
+  font-size: 12px;
+  color: #6b7280;
+  margin-bottom: 6px;
+  display: block;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.input-wrap { 
+  position: relative; 
+}
+
+.input-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #9ca3af;
+  font-size: 18px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 14px 12px 40px;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 14px;
+  background: #fff;
+  color: #111827;
+  outline: none;
+  transition: all 0.2s;
+  box-sizing: border-box;
+}
+
+.form-input:focus {
+  border-color: #6c63ff;
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.1);
+}
+
+.disabled-wrap .form-input {
+  background: #f3f4f6;
+  color: #6b7280;
+  cursor: not-allowed;
+  border-color: #e5e7eb;
+}
+
+.disabled-wrap .input-icon {
+  color: #9ca3af;
+}

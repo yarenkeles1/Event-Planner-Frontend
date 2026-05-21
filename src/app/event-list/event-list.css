@@ -1,0 +1,152 @@
+.event-list-page {
+  padding: 2rem;
+  background: #eef2ff;
+  min-height: calc(100vh - 64px);
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.page-title {
+  font-size: 22px;
+  font-weight: 500;
+  color: #1e1b4b;
+}
+
+.search-wrap {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 0.5px solid #c7d2fe;
+  border-radius: 99px;
+  padding: 8px 16px;
+  gap: 8px;
+  width: 280px;
+}
+
+.search-wrap i {
+  color: #a5b4fc;
+  font-size: 16px;
+}
+
+.search-wrap input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: #111827;
+  background: transparent;
+  width: 100%;
+}
+
+.search-wrap input::placeholder {
+  color: #9ca3af;
+}
+
+.event-card {
+  background: #fff;
+  border: 0.5px solid #e0e7ff;
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.event-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 16px rgba(99, 102, 241, 0.10);
+}
+
+.card-img-wrapper {
+  position: relative;
+}
+
+.card-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+
+.floating-category {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #4338ca;
+  backdrop-filter: blur(4px);
+}
+
+.card-body {
+  padding: 1rem 1.1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1e1b4b;
+  margin: 0 0 0.4rem 0;
+  line-height: 1.4;
+}
+
+.card-desc {
+  font-size: 12px;
+  color: #6b7280;
+  line-height: 1.55;
+  margin-bottom: 0.75rem;
+  flex: 1;
+}
+
+.card-footer-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-top: 0.6rem;
+  border-top: 0.5px solid #e0e7ff;
+  margin-top: auto;
+}
+
+.info-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.info-badge i {
+  font-size: 14px;
+  color: #818cf8;
+  flex-shrink: 0;
+}
+
+.info-badge:first-child {
+  font-weight: 500;
+  color: #4338ca;
+}
+
+.info-badge:last-child {
+  color: #6b7280;
+}
+
+.page-link.active {
+  background: #6c63ff;
+  border-color: #6c63ff;
+  color: #fff;
+}

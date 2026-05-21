@@ -1,0 +1,156 @@
+<div class="form-page">
+  <div class="form-card">
+
+    <div class="accent-bar"></div>
+
+    <div class="card-head">
+      <h2>Etkinlik Oluştur</h2>
+    </div>
+
+    <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <div class="input-wrap">
+          <i class="ti ti-calendar-event input-icon"></i>
+          <input
+            class="form-input"
+            type="text"
+            placeholder="Etkinlik adı"
+            formControlName="title"
+          />
+        </div>
+        @if (eventForm.get('title')?.hasError('required') && eventForm.get('title')?.touched) {
+          <small class="error">Etkinlik adı zorunludur</small>
+        }
+        @if (eventForm.get('title')?.hasError('minlength') && eventForm.get('title')?.touched) {
+          <small class="error">Etkinlik başlığı minimum 2 karakterli olmalıdır</small>
+        } @if (eventForm.get('title')?.hasError('maxlength') && eventForm.get('title')?.touched) {
+          <small class="error">Etkinlik adı en fazla 200 karakter olmalıdır</small>
+        }
+      </div>
+
+      <div class="form-row">
+
+        <div class="form-group">
+          <label class="form-label">TARİH</label>
+
+          <div class="input-wrap">
+            <i class="ti ti-calendar input-icon"></i>
+
+            <input
+              class="form-input"
+              type="date"
+              formControlName="date"
+            />
+          </div>
+
+          @if (eventForm.get('date')?.invalid && eventForm.get('date')?.touched) {
+            <small class="error">Tarih zorunludur</small>
+          }
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">SAAT</label>
+
+          <div class="input-wrap">
+            <i class="ti ti-clock input-icon"></i>
+
+            <input
+              class="form-input"
+              type="time"
+              formControlName="time"
+            />
+          </div>
+
+          @if (eventForm.get('time')?.invalid && eventForm.get('time')?.touched) {
+            <small class="error">Saat zorunludur</small>
+          }
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <div class="input-wrap">
+          <i class="ti ti-map-pin input-icon"></i>
+
+          <input
+            class="form-input"
+            type="text"
+            placeholder="Yer"
+            formControlName="location"
+          />
+        </div>
+
+        @if (eventForm.get('location')?.hasError('required') && eventForm.get('location')?.touched) {
+          <small class="error">Lokasyon zorunludur</small>
+        }
+        @if (eventForm.get('location')?.hasError('minlength') && eventForm.get('location')?.touched) {
+          <small class="error">Lokasyon en az 2 karakter olmalıdır</small>
+        }
+        @if (eventForm.get('location')?.hasError('maxlength') && eventForm.get('location')?.touched) {
+          <small class="error">Lokasyon en fazla 200 karakter olmalıdır</small>
+        }
+      </div>
+
+      <div class="form-group">
+        <div class="input-wrap">
+          <i class="ti ti-tag input-icon"></i>
+
+          <input
+            class="form-input"
+            type="text"
+            placeholder="Kategori"
+            formControlName="category"
+          />
+        </div>
+
+        @if (eventForm.get('category')?.hasError('required') && eventForm.get('category')?.touched) {
+          <small class="error">Kategori zorunludur</small>
+        }
+        @if (eventForm.get('category')?.hasError('minlength') && eventForm.get('category')?.touched) {
+          <small class="error">Kategori en az 2 karakter olmalıdır</small>
+        }
+        @if (eventForm.get('category')?.hasError('maxlength') && eventForm.get('category')?.touched) {
+          <small class="error">Kategori en fazla 50 karakter olmalıdır</small>
+        }
+      </div>
+
+      <div class="form-group">
+        <textarea
+          class="form-input textarea"
+          placeholder="Açıklama..."
+          rows="4"
+          formControlName="description"
+        ></textarea>
+
+        @if (eventForm.get('description')?.hasError('required') && eventForm.get('description')?.touched) {
+          <small class="error">Açıklama zorunludur</small>
+        }
+        @if (eventForm.get('description')?.hasError('minlength') && eventForm.get('description')?.touched) {
+          <small class="error">Açıklama en az 2 karakter olmalıdır</small>
+        }
+        @if (eventForm.get('description')?.hasError('maxlength') && eventForm.get('description')?.touched) {
+          <small class="error">Açıklama en fazla 1000 karakter olmalıdır</small>
+        }
+      </div>
+      <div class="form-group">
+        <label class="form-label">Etkinlik Görsel Linki (URL)</label>
+        <div class="input-wrap">
+          <i class="ti ti-link input-icon"></i>
+          <input class="form-input" type="text" formControlName="imageUrl" placeholder="https://siteadi.com/resim.jpg" />
+        </div>
+        <small class="text-muted" style="font-size: 11px; color: #9ca3af; display: block; margin-top: 4px;">
+            İnternetteki herhangi bir resmin adresini sağ tıklayıp "Resim adresini kopyala" diyerek buraya yapıştırabilirsiniz.
+        </small>
+      </div>
+
+      <button
+        class="btn-primary"
+        type="submit"
+      >
+        Etkinlik Oluştur
+      </button>
+
+    </form>
+  </div>
+</div>

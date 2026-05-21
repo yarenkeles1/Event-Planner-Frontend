@@ -1,0 +1,60 @@
+<div class="detail-page">
+  @if (loading()) {
+    <div class="text-center my-4">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Yükleniyor...</span>
+      </div>
+    </div>
+  }
+
+  @if (event()) {
+    <div class="detail-card">
+      
+      <img [src]="event()!.imageUrl || 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=800&auto=format&fit=crop'" 
+           alt="Etkinlik Görseli" 
+           class="detail-small-img">
+
+      <div class="detail-header">
+        <div>
+          <span class="badge-category">{{ event()!.category }}</span>
+          <h2 class="detail-title">{{ event()!.title }}</h2>
+          <div class="detail-owner">
+            <i class="ti ti-user"></i> {{ event()!.ownerFullName }}
+          </div>
+        </div>
+        <span class="badge-status" [class]="'status-' + event()!.status.toLowerCase()">
+          {{ statusLabel(event()!.status) }}
+        </span>
+      </div>
+
+      <div class="detail-meta-row">
+        <div class="detail-meta">
+          <i class="ti ti-calendar"></i> {{ event()!.date | date:'dd.MM.yyyy' }}
+        </div>
+        <div class="detail-meta">
+          <i class="ti ti-clock"></i> {{ event()!.time | slice:0:5 }}
+        </div>
+        <div class="detail-meta">
+          <i class="ti ti-map-pin"></i> {{ event()!.location }}
+        </div>
+        <div class="detail-meta">
+          <i class="ti ti-users"></i> {{ event()!.participationCount }} Katılımcı
+        </div>
+      </div>
+
+      <div class="detail-desc">
+        {{ event()!.description }}
+      </div>
+
+      @if (isLoggedIn() && !isOwner()) {
+        <button class="btn-primary" 
+                (click)="joinEvent()" 
+                [disabled]="isJoined()" 
+                [class.btn-disabled]="isJoined()">
+          <i class="ti" [class.ti-circle-plus]="!isJoined()" [class.ti-circle-check]="isJoined()"></i> 
+          {{ isJoined() ? 'Katıldınız' : 'Etkinliğe Katıl' }}
+        </button>
+      }
+    </div>
+  }
+</div>
