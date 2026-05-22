@@ -1,5 +1,6 @@
 import { Component, signal, OnInit, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-navbar',
@@ -10,6 +11,7 @@ import { RouterLink, RouterLinkActive, Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   private router = inject(Router);
+  private http = inject(HttpClient);
 
   isLoggedIn = signal<boolean>(false);
   userName = signal<string>('');
@@ -30,7 +32,16 @@ export class NavbarComponent implements OnInit {
     sessionStorage.clear();
     this.isLoggedIn.set(false);
     this.userName.set('');
-    
-    this.router.navigate(['/login']);
-  }
+
+    this.http.post('http://localhost:8081/event/logout', {}, { withCredentials: true })
+      .subscribe({
+        next: () => {
+          this.router.navigate(['/login']);
+        },
+        error: (err) => {
+          console.error('Çıkış işleminde sunucu hatası:', err);
+          this.router.navigate(['/login']); 
+        }
+      });
+}
 }
